@@ -12,8 +12,11 @@
   }
 
   #btn:hover {
+    transition: 0.2s;
     background-color: black;
     border: none;
+    width: 3.2em;
+    height: 3.2em;
   }
 
   #chatbot {
@@ -33,66 +36,125 @@
     bottom: 0;
     z-index: 1080;
     margin-right: 15px;
-    margin-bottom: 70px;
+    margin-top: 70px;
+    margin-bottom: 120px;
     background-color: white;
-    border-radius: 20%;
+    border-radius: 50%;
     box-shadow: 3px 5px 10px darkgray;
   }
 
   .header {
-    height: 10%;
+    display: flex;
+    flex-direction: row;
+    height: 0%;
     background-color: #57C5B6;
     color: #002B5B;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
+    visibility: hidden;
+    justify-content: center;
   }
 
   .header-title {
     color: #002B5B;
     font-size: 24pt;
-  }
-
-  .close {
-    font-size: 40px;
-    color: #002B5B;
-    position: absolute;
-    right: 14px;
-    top: 3px;
-  }
-
-  .close:hover {
-    cursor: pointer;
-    color: #002B5B;
+    padding-top: 0.5%;
   }
 
   .isi {
-    overflow-y: auto;
     width: 100%;
     height: 80%;
+
   }
 
   .footer {
+    height: 20%;
+    background-color: #fff;
 
-    height: 10.2%;
-    background-color: #57C5B6;
-    border-top: 2px solid #57C5B6;
-    padding-top: 1.3%;
+    position: relative;
     text-align: center;
-
+    justify-content: center;
+    box-shadow: 0px -3px 4px -4px grey;
   }
 
-  /* .footer-title {} */
+  .c-button {
+    border-radius: 13px;
+    background-color: #00916E;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 9px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+  }
+
+  .c-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .c-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .c-button:hover span {
+    padding-right: 25px;
+  }
+
+  .c-button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 
   #pop-up {
-    width: 98%;
-    height: 90%;
-    border-radius: 50%;
+    width: 95%;
+    height: 80%;
+
   }
+
+
 
   @media only screen and (max-width:850px) {
     .footer {
       align-items: center;
+    }
+  }
+
+  @media only screen and (max-height:612px) {
+    #pop-up {
+      height: 70%;
+
+    }
+
+    .footer {
+      height: 90px;
+
+    }
+
+    .header-title {
+      font-size: 18pt;
+    }
+
+    .pop-up-wrapper {
+      box-shadow: -2px 5px 8px 5px darkgray;
+
+    }
+
+    .c-button {
+      margin-top: 1%;
     }
   }
 </style>
@@ -100,24 +162,45 @@
 
 <!-- /.content-wrapper -->
 
-<button type="button" onclick="document.getElementById('chatbot').style.display='block'" id="btn" class="btn btn-success rounded-circle p-0 m-3">
-  <i class="fas fa-solid fa-comment-dots fa-lg"></i>
+<button type="button" onclick="openIcon(event)" id="btn" class="btn btn-success rounded-circle p-0 m-3">
+  <i class="fas fa-solid fa-comment-dots fa-lg" id="icon-open"></i>
+  <!-- <i class="fa-solid fa-x fa-lg" id="icon-open"></i> -->
+
+
 </button>
 <div id="chatbot">
 
   <div class="pop-up-wrapper rounded" id="pop-up">
-    <div class="header ">
-      <p class="header-title">Chatbot</p>
-      <span class="close" onclick="document.getElementById('chatbot').style.display='none'">&times;</span>
+    <div class="header" id="this-header">
+      <div style="flex-grow: 1; padding-top:1.3%">
+        <a type="button" onclick="function1(event)">
+          <i class="fa fa-solid fa-backward fa-xl" style="font-size: 20px;color:#002B5B"></i>
+        </a>
+      </div>
+      <div style="flex-grow: 15; padding-right: 10%">
+        <p class="header-title">Message</p>
+      </div>
+
+      <!-- <span id class="close" onclick="document.getElementById('chatbot').style.display = 'none'">&times;</span> -->
     </div>
-    <div class="isi">
+    <div class="isi" id="this-isi">
 
-      <iframe src="chatbotPage" width="100%" height="98%" style="border:none ;"></iframe>
-
+      <iframe id="template-obj" src="chatbotMenu" width="100%" height="100%" style="border:none ;"></iframe>
+      <!-- <object id="template-obj" data="chatbotPage" width="100%" height="98%"></object> -->
     </div>
 
-    <div class="footer">
-      <p class="footer-title">Powered by</p>
+    <div class="footer" id="this-footer">
+      <div class="choice-menu">
+        <button class="c-button" onclick="function1(event)" id="landpage">
+          <div><i class="fa far fa-home fa-xs" style="font-size: 20px;"></i></div>
+          <div><span>Main</span></div>
+        </button>
+        <button class="c-button" onclick="function2(event)" id="corepage">
+          <div><i class="fas fa-comments" style="font-size: 20px;"></i></div>
+          <div><span>Message</span></div>
+        </button>
+      </div>
+
     </div>
 
   </div>
@@ -142,6 +225,54 @@
   <script src="<?= base_url('assets/template/backend/') ?>dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url('assets/template/backend/') ?>dist/js/demo.js"></script>
+  <script>
+    function function1(e) {
+      // Get which button was clicked from the event that is passed in, and set its onclick event
+      document.getElementById("template-obj").src = "chatbotMenu";
+      document.getElementById("landpage").disabled = true;
+      document.getElementById("corepage").disabled = false;
+      document.getElementById("this-header").style.visibility = 'hidden';
+      document.getElementById("this-header").style.height = '0%';
+      document.getElementById("this-isi").style.height = '80%';
+      document.getElementById("this-footer").style.visibility = 'visible';
+      document.getElementById("this-footer").style.height = '20%';
+    }
+
+
+    function function2(e) {
+      // Get which button was clicked from the event that is passed in, and set its onclick event
+      document.getElementById("template-obj").src = "chatbotPage";
+      document.getElementById("corepage").disabled = true;
+      document.getElementById("landpage").disabled = false;
+      document.getElementById("this-header").style.visibility = 'visible';
+      document.getElementById("this-header").style.height = '10%';
+      document.getElementById("this-isi").style.height = '90%';
+      document.getElementById("this-footer").style.visibility = 'hidden';
+      document.getElementById("this-footer").style.height = '0';
+    }
+
+    function openIcon(e) {
+      document.getElementById('btn').onclick = function() {
+        closeIcon(e);
+      }
+
+      document.getElementById('icon-open').className = "fas fa-angle-down fa-lg";
+      document.getElementById('icon-open').style.fontSize = '24px';
+      document.getElementById('icon-open').style.marginTop = '10px';
+      document.getElementById('chatbot').style.display = 'block';
+    }
+
+    function closeIcon(e) {
+      document.getElementById('btn').onclick = function() {
+        openIcon(e);
+      }
+      document.getElementById('icon-open').className = "fas fa-solid fa-comment-dots fa-lg";
+      document.getElementById('icon-open').style.fontSize = '';
+      document.getElementById('icon-open').style.marginTop = '';
+      document.getElementById('chatbot').style.display = 'none';
+    }
+  </script>
+
 </div>
 
 

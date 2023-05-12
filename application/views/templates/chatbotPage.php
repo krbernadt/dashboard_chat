@@ -20,18 +20,16 @@
     <style type="text/css">
         #chatbot {
             position: fixed;
+
             right: 0;
-            bottom: 0;
-            z-index: 1080;
-            display: none;
-            overflow: auto;
+            overflow-y: auto;
 
         }
 
         .isi {
-            overflow-y: auto;
             width: 100%;
-            height: 80%;
+            height: 100%;
+            overflow-y: auto;
         }
 
         .pesan-bot {
@@ -106,7 +104,6 @@
             width: 100%;
             padding: 1px;
             margin: 10px 0 10px;
-
         }
 
 
@@ -135,6 +132,16 @@
             color: white;
         }
 
+        .footer {
+            width: 100%;
+            height: 20%;
+            background-color: #fff;
+            position: fixed;
+            text-align: center;
+            bottom: 0;
+            box-shadow: 0px -3px 4px -4px grey;
+        }
+
         .choice-div {
 
             float: left;
@@ -143,6 +150,15 @@
             width: 100%;
             margin: 2px 0 10px;
 
+        }
+
+        .second-pop {
+            position: fixed;
+            top: 0;
+            bottom: 20%;
+            width: 100%;
+            background-color: white;
+            box-shadow: 3px 5px 10px darkgray;
         }
 
         @media only screen and (max-width:850px) {
@@ -166,24 +182,29 @@
 </head>
 
 <body>
+    <div class="second-pop">
+        <div class="isi">
+            <div class="chat-bot">
+                <div class="test-div">
+                    <p class="pesan-bot">Halo, apa ada yang bisa dibantu ?</p>
 
-    <div class="isi">
-        <div class="chat-bot">
-            <div class="test-div">
-                <p class="pesan-bot">Halo, apa ada yang bisa dibantu ?</p>
-
-            </div>
-
-            <div class="choice-div">
-                <?php
-                foreach ($chatbot as $cbt) :
-                ?>
-                    <button class="cb-button" id="<?= $cbt->isi_cb ?>" onclick="reply_click(this.id)"><?= $cbt->isi_cb ?></button>
-                <?php endforeach ?>
+                </div>
+                <div class="choice-div">
+                    <?php
+                    foreach ($chatbot as $cbt) :
+                    ?>
+                        <button class="cb-button" id="<?= $cbt->isi_cb ?>" onclick="reply_click(this.id)"><?= $cbt->isi_cb ?></button>
+                    <?php endforeach ?>
+                </div>
             </div>
 
         </div>
+        <div class="footer">
+            <p>test</p>
+        </div>
     </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
@@ -222,8 +243,8 @@
                     url: _base_url_ + "chatbot.php?f=get_reply",
                     data: 'text=' + $pesan,
                     success: function(result) {
-                        $replies = '<div class="chat-bot"><div class="test-div"><p class="pesan-bot">' + result + '</p></div></div>';
-                        $(".isi").append($replies);
+                        $replies = '<div class="chat-bot"><div class="test-div"><p class="pesan-bot">' + result + '</p></div></div> ';
+
                         $(".isi").scrollTop($(".chat-bot")[0].scrollHeight);
                     }
                 });
@@ -260,8 +281,10 @@
                             $replies = '<div class="chat-bot"><div class="test-div"><p class="pesan-bot">' + resp.replies + '</p></div></div>';
                             $(".isi").append($replies);
                             $(".isi").scrollTop($(".isi")[0].scrollHeight);
+
                         }
                     }
+
 
                     // $replies = '<div class="chat-bot"><div class="test-div"><p class="pesan-bot">' + result + '</p></div></div>';
                     // $(".isi").append($replies);

@@ -37,6 +37,9 @@
             <input type="password" name="password" class="form-control" autocomplete="off">
             <small><span class="text-danger"><?= form_error('password'); ?></span></small>
           </div>
+          <div>
+            <p>Username & Password = admin</p>
+          </div>
           <button type="submit" class="btn btn-primary">Login</button>
         </form>
 

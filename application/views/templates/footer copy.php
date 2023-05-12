@@ -1,4 +1,4 @@
-<!-- <style type="text/css">
+<style type="text/css">
   #btn {
     position: fixed;
     right: 0;
@@ -7,13 +7,16 @@
     z-index: 1080;
     width: 3em;
     height: 3em;
-    background: #B1B2FF;
-    border-color: #B1B2FF;
+    background: #57C5B6;
+    border-color: #57C5B6;
   }
 
   #btn:hover {
+    transition: 0.2s;
     background-color: black;
     border: none;
+    width: 3.2em;
+    height: 3.2em;
   }
 
   #chatbot {
@@ -24,8 +27,8 @@
     display: none;
     overflow: auto;
 
-  }
 
+  }
 
   .pop-up-wrapper {
     position: fixed;
@@ -33,258 +36,165 @@
     bottom: 0;
     z-index: 1080;
     margin-right: 15px;
-    margin-bottom: 70px;
-
+    margin-top: 70px;
+    margin-bottom: 120px;
     background-color: white;
+    border-radius: 50%;
     box-shadow: 3px 5px 10px darkgray;
   }
 
   .header {
-    height: 50px;
-    background-color: #B1B2FF;
-    color: black;
+    height: 10%;
+    background-color: #57C5B6;
+    color: #002B5B;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
+    visibility: hidden;
   }
 
   .header-title {
-    color: #400D51;
+    color: #002B5B;
     font-size: 24pt;
   }
 
-  .close {
-    font-size: 40px;
-    color: #400D51;
-    position: absolute;
-    right: 14px;
-    top: 3px;
-  }
-
-  .close:hover {
-    cursor: pointer;
-    color: #400D51;
-  }
-
   .isi {
-    overflow-y: auto;
     width: 100%;
-    height: 80%;
-  }
+    height: 70%;
 
-  .pesan-bot {
-    display: block;
-    float: left;
-    background-color: #EEF1FF;
-    /* font-weight: bold; */
-    color: #400D51;
-    font-size: 14pt;
-    width: fit-content;
-    border-radius: 10px;
-    padding: 10px;
-    max-width: 20%;
-    margin: 5px 20% 10px;
-    word-wrap: break-word;
-    overflow: auto;
-  }
-
-  .pesan-user {
-    display: block;
-    background-color: #D2DAFF;
-    color: #400D51;
-    font-size: 14pt;
-    width: fit-content;
-    border-radius: 10px !important;
-    padding: 10px;
-    max-width: 20%;
-    margin: 20px 20% 10px;
-    float: right;
-    word-wrap: break-word;
-    overflow: auto;
-    /* font-weight: bold; */
   }
 
   .footer {
-    display: flex;
-    height: 55px;
-    background-color: none;
-    border-top: 2px solid #B1B2FF;
-    padding-top: 0.3%;
-    padding-left: 3%;
-    padding-right: 3%;
+    height: 20%;
+    background-color: #fff;
 
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0px -3px 4px -4px grey;
   }
 
-  .pesan {
-    flex: 11;
-    width: 90% !important;
-    height: 95% !important;
-    color: black;
-    font-size: 14pt !important;
-    border: 2px solid #B1B2FF;
-    margin-top: 10px !important;
-    padding-left: 10px !important;
-    border-radius: 7px;
+  .c-button {
+    border-radius: 13px;
+    background-color: #00916E;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 9px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
   }
 
-  .btnsend {
-    margin-left: 1%;
-    flex: 1;
-    border-style: none;
-    border-radius: 5px;
-    width: 70px;
-    color: #400D51;
-    background-color: #B1B2FF;
-    height: 95%;
-    font-size: 15pt;
-    margin-top: 10px;
-    font-weight: bold;
-    align-items: center;
-    transition-duration: 0.4s;
+
+
+  .c-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
   }
 
-  .btnsend:hover {
-    background-color: #000;
-    color: #fff;
+  .c-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
   }
+
+  .c-button:hover span {
+    padding-right: 25px;
+  }
+
+  .c-button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
 
   #pop-up {
-    width: 98%;
-    height: 90%;
-    border-radius: 50%;
-  }
-
-  .pesan-master {
-    flex: 6;
-    background-color: #D2DAFF;
-    color: #400D51;
-    font-size: 14pt;
-    width: fit-content;
-    border-radius: 10px !important;
-    padding: 10px;
-    float: right;
-    max-width: 20%;
-    margin: 5px 5px 0px;
-    word-wrap: break-word;
-    overflow: auto;
-  }
-
-  .test-div {
-    display: blocks;
-    float: left;
-    background-color: #fff;
-    /* font-weight: bold; */
-    width: 100%;
-    padding: 1px;
-    margin: 10px 0 10px;
+    width: 95%;
+    height: 80%;
 
   }
 
-  .master-div {
-    float: right;
-    background-color: #fff;
-    /* font-weight: bold; */
-    width: 100%;
-    padding-right: 20%;
-    padding-left: 30%;
-    margin: 10px 0 10px;
-  }
 
-  .cb-button {
-    border: none;
-    display: block;
-    color: white;
-    max-width: 20%;
-    padding: 10px;
-    text-align: center;
-    overflow: auto;
-    display: table;
-    font-size: 16px;
-    border-radius: 10px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    background-color: #EEF1FF;
-    color: #400D51;
-    border: 2px solid #400D51;
-    margin: 5px 20% 10px;
-  }
-
-  .cb-button:hover {
-    background-color: #400D51;
-    color: white;
-  }
-
-  .choice-div {
-
-    float: left;
-    background-color: #fff;
-    /* font-weight: bold; */
-    width: 100%;
-    margin: 2px 0 10px;
-
-  }
 
   @media only screen and (max-width:850px) {
     .footer {
       align-items: center;
     }
+  }
 
-    .pesan {
-      width: 85% !important;
-      height: 90% !important;
+  @media only screen and (max-height:612px) {
+    #pop-up {
+      height: 70%;
+
     }
 
-    .btnsend {
-      width: 60px;
-      font-size: 12pt;
-      height: 90%;
+    .footer {
+      height: 90px;
 
+    }
+
+    .header-title {
+      font-size: 18pt;
+    }
+
+    .pop-up-wrapper {
+      box-shadow: -2px 5px 8px 5px darkgray;
+
+    }
+
+    .c-button {
+      margin-top: 1%;
     }
   }
-</style> -->
+</style>
 <!-- End styling -->
-
 
 <!-- /.content-wrapper -->
 
-<button type="button" onclick="document.getElementById('chatbot').style.display='block'" id="btn" class="btn btn-success rounded-circle p-0 m-3">
-  <i class="fas fa-solid fa-comment-dots fa-lg"></i>
+<button type="button" onclick="openIcon(event)" id="btn" class="btn btn-success rounded-circle p-0 m-3">
+  <i class="fas fa-solid fa-comment-dots fa-lg" id="icon-open"></i>
+  <!-- <i class="fa-solid fa-x fa-lg" id="icon-open"></i> -->
+
+
 </button>
-<div id="chatbot" class="rounded">
+<div id="chatbot">
 
-  <div class="pop-up-wrapper rounded" id="pop-up">
-    <div class="header ">
-      <p class="header-title">Chatbot</p>
-      <span class="close" onclick="document.getElementById('chatbot').style.display='none'">&times;</span>
-    </div>
-    <div class="isi">
-      <div class="chat-bot">
-        <div class="test-div">
-          <p class="pesan-bot">Halo, apa ada yang bisa dibantu ?</p>
 
-        </div>
-
-        <div class="choice-div">
-          <?php
-          foreach ($chatbot as $cbt) :
-          ?>
-            <button class="cb-button" id="<?= $cbt->isi_cb ?>" onclick="reply_click(this.id)"><?= $cbt->isi_cb ?></button>
-          <?php endforeach ?>
-        </div>
-        <div class=" master-div">
-
-        </div>
-      </div>
-    </div>
-    <!-- <div class="footer">
-      <form class="form-inline chatform"></form>
-      <input type="text" disabled class="pesan" id="pesan" name="chat-form" placeholder="Tulis pesan Anda...">
-      <button type="button" class="btnsend">Kirim</button>
-    </div> -->
-    <div class="footer">
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <div class="header" id="this-header">
+    <p class="header-title">Message</p>
+    <!-- <span id class="close" onclick="document.getElementById('chatbot').style.display = 'none'">&times;</span> -->
   </div>
+  <div class="isi">
+
+    <iframe id="template-obj" src="chatbotMenu" width="100%" height="100%" style="border:none ;"></iframe>
+    <!-- <object id="template-obj" data="chatbotPage" width="100%" height="98%"></object> -->
+  </div>
+
+  <div class="footer">
+    <div class="choice-menu">
+      <button class="c-button" onclick="function1(event)" id="landpage">
+        <div><i class="fa far fa-home fa-xs" style="font-size: 20px;"></i></div>
+        <div><span>Main</span></div>
+      </button>
+      <button class="c-button" onclick="function2(event)" id="corepage">
+        <div><i class="fas fa-comments" style="font-size: 20px;"></i></div>
+        <div><span>Message</span></div>
+      </button>
+    </div>
+
+  </div>
+
+
 
 </div>
 
@@ -294,103 +204,61 @@
 <aside class="control-sidebar control-sidebar-dark">
   <!-- Control sidebar content goes here -->
 </aside>
-<!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
 
 
-<!-- Chatbot script -->
 
 <div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="<?= base_url('assets/template/backend/') ?>plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="<?= base_url('assets/template/backend/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- DataTables  & Plugins -->
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/jszip/jszip.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="<?= base_url('assets/template/backend/') ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= base_url('assets/template/backend/') ?>dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url('assets/template/backend/') ?>dist/js/demo.js"></script>
+  <script>
+    function function1(e) {
+      // Get which button was clicked from the event that is passed in, and set its onclick event
+      document.getElementById("template-obj").src = "chatbotMenu";
+      document.getElementById("landpage").disabled = true;
+      document.getElementById("corepage").disabled = false;
+      document.getElementById("this-header").style.visibility = 'hidden';
+
+    }
+
+
+    function function2(e) {
+      // Get which button was clicked from the event that is passed in, and set its onclick event
+      document.getElementById("template-obj").src = "chatbotPage";
+      document.getElementById("corepage").disabled = true;
+      document.getElementById("landpage").disabled = false;
+      document.getElementById("this-header").style.visibility = 'visible';
+    }
+
+    function openIcon(e) {
+      document.getElementById('btn').onclick = function() {
+        closeIcon(e);
+      }
+
+      document.getElementById('icon-open').className = "fas fa-angle-down fa-lg";
+      document.getElementById('icon-open').style.fontSize = '24px';
+      document.getElementById('icon-open').style.marginTop = '10px';
+      document.getElementById('chatbot').style.display = 'block';
+    }
+
+    function closeIcon(e) {
+      document.getElementById('btn').onclick = function() {
+        openIcon(e);
+      }
+      document.getElementById('icon-open').className = "fas fa-solid fa-comment-dots fa-lg";
+      document.getElementById('icon-open').style.fontSize = '';
+      document.getElementById('icon-open').style.marginTop = '';
+      document.getElementById('chatbot').style.display = 'none';
+    }
+  </script>
+
 </div>
 
-<!-- replies script -->
-<script type="text/javascript">
-  // manual message
-  $(document).ready(function() {
-    $(".btnsend").on("click", function() {
-      $pesan = $(".pesan").val();
-      $msg = '<div class="test-div" ><p class="pesan-user">' + $pesan + '</p></div>';
-      $(".isi").append($msg);
-      $(".pesan").val("");
-
-      // membuat balasan
-
-      $.ajax({
-        type: "POST",
-        url: _base_url_ + "chatbot.php?f=get_reply",
-        data: 'text=' + $pesan,
-        success: function(result) {
-          $replies = '<div class="chat-bot"><div class="test-div"><p class="pesan-bot">' + result + '</p></div></div>';
-          $(".isi").append($replies);
-          $(".isi").scrollTop($(".isi")[0].scrollHeight);
-        }
-      });
-    });
-  });
-
-
-  //choices message 
-
-  function reply_click(clicked_id) {
-    let choice = document.getElementById(clicked_id);
-    let text = choice.innerHTML;
-    $msg = '<div class="test-div" ><p class="pesan-user">' + text + '</p></div>';
-    $(".isi").append($msg);
-    $(".pesan").val("");
-
-    $.ajax({
-      type: "POST",
-      url: "<?= base_url('command/quickreply') ?>",
-
-      data: {
-        message: text
-      },
-
-      success: function(resp) {
-        if (resp) {
-          var resp = JSON.parse(resp)
-
-          if (resp.status == 'success') {
-            $replies = '<div class="chat-bot"><div class="test-div"><a class="pesan-bot" target="_blank" href=' + resp.replies + '>Click Here</a></div></div>';
-            $(".isi").append($replies);
-            $(".isi").scrollTop($(".isi")[0].scrollHeight);
-          } else {
-            $replies = '<div class="chat-bot"><div class="test-div"><p class="pesan-bot">' + resp.replies + '</p></div></div>';
-            $(".isi").append($replies);
-            $(".isi").scrollTop($(".isi")[0].scrollHeight);
-          }
-        }
-
-        // $replies = '<div class="chat-bot"><div class="test-div"><p class="pesan-bot">' + result + '</p></div></div>';
-        // $(".isi").append($replies);
-        // $(".isi").scrollTop($(".isi")[0].scrollHeight);
-      }
-    });
-  }
-</script>
 
 </body>
 

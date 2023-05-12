@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 08:26 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Sep 03, 2022 at 06:13 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,29 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tabel_cb`
---
-
-CREATE TABLE `tabel_cb` (
-  `id_cb` int(10) NOT NULL,
-  `isi_cb` text NOT NULL,
-  `reply_cb` varchar(512) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tabel_cb`
---
-
-INSERT INTO `tabel_cb` (`id_cb`, `isi_cb`, `reply_cb`) VALUES
-(1, 'Attendance', 'https://api.fadeintech.com/login'),
-(2, 'Payment', 'https://api.fadeintech.com/login'),
-(3, 'Certification', 'https://api.fadeintech.com/login'),
-(4, 'Cant use Apps', 'https://api.fadeintech.com/login'),
-(5, 'Advanced', 'https://google.com');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tabel_jabatan`
 --
 
@@ -54,7 +31,7 @@ CREATE TABLE `tabel_jabatan` (
   `id_jabatan` int(10) NOT NULL,
   `id_pegawai` int(10) NOT NULL,
   `jabatan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tabel_jabatan`
@@ -75,7 +52,7 @@ CREATE TABLE `tabel_kontrak` (
   `id_kontrak` int(10) NOT NULL,
   `id_pegawai` int(10) NOT NULL,
   `tanggal_kontrak` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tabel_kontrak`
@@ -96,7 +73,7 @@ CREATE TABLE `tabel_pegawai` (
   `id_pegawai` int(10) NOT NULL,
   `nama_pegawai` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tabel_pegawai`
@@ -110,19 +87,6 @@ INSERT INTO `tabel_pegawai` (`id_pegawai`, `nama_pegawai`, `alamat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tabel_reply`
---
-
-CREATE TABLE `tabel_reply` (
-  `id_chat` int(11) NOT NULL,
-  `username` text NOT NULL,
-  `question` text NOT NULL,
-  `answer` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tabel_user`
 --
 
@@ -132,7 +96,7 @@ CREATE TABLE `tabel_user` (
   `email` varchar(64) NOT NULL,
   `password` varchar(255) NOT NULL,
   `last_login` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tabel_user`
@@ -144,12 +108,6 @@ INSERT INTO `tabel_user` (`id_user`, `username`, `email`, `password`, `last_logi
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `tabel_cb`
---
-ALTER TABLE `tabel_cb`
-  ADD PRIMARY KEY (`id_cb`);
 
 --
 -- Indexes for table `tabel_jabatan`
@@ -172,12 +130,6 @@ ALTER TABLE `tabel_pegawai`
   ADD PRIMARY KEY (`id_pegawai`);
 
 --
--- Indexes for table `tabel_reply`
---
-ALTER TABLE `tabel_reply`
-  ADD PRIMARY KEY (`id_chat`);
-
---
 -- Indexes for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
@@ -186,18 +138,6 @@ ALTER TABLE `tabel_user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `tabel_cb`
---
-ALTER TABLE `tabel_cb`
-  MODIFY `id_cb` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tabel_reply`
---
-ALTER TABLE `tabel_reply`
-  MODIFY `id_chat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tabel_user`
